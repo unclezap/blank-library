@@ -2,17 +2,18 @@ class Page < ApplicationRecord
     has_many :lines
     belongs_to :book
 
-    def self.make_with_lines
-        @page = Page.create()
-        # byebug
-        Book.all.last.pages << @page
-        # byebug
+    def self.make_with_lines(book)
+       
+        @book = book
+        @page = Page.create
+
         40.times do
             Line.make_with_text(@page)
         end
-        # byebug
+
+        @book.pages << @page
         @page.save
-        # byebug
+        @page
     end
 
 end

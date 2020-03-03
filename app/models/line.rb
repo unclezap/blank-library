@@ -3,9 +3,10 @@ class Line < ApplicationRecord
     belongs_to :page
 
     def self.make_with_text(page)
+        
         @page = page
-        # byebug
         @line = Line.new
+        
         string = ""
         ref_string = "abcdefghijlmnoprstuvyz ,."
         80.times do
@@ -13,11 +14,10 @@ class Line < ApplicationRecord
             string << ref_string[i]
         end
         @line[:text] = string.split('').shuffle.join
-        # byebug
         @page.lines << @line
-        # byebug
+        
         @line.save
-        # byebug
+        @line
     end
 
 end

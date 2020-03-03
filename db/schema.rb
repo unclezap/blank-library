@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_03_054859) do
+ActiveRecord::Schema.define(version: 2020_03_03_074906) do
 
   create_table "books", force: :cascade do |t|
     t.string "spine"
+  end
+
+  create_table "galleries", force: :cascade do |t|
+  end
+
+  create_table "jaunts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "gallery_id"
   end
 
   create_table "lines", force: :cascade do |t|
@@ -26,9 +34,19 @@ ActiveRecord::Schema.define(version: 2020_03_03_054859) do
     t.integer "user_id"
   end
 
+  create_table "shelves", force: :cascade do |t|
+    t.integer "number"
+    t.integer "wall_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "password"
+  end
+
+  create_table "walls", force: :cascade do |t|
+    t.integer "number"
+    t.integer "gallery_id"
   end
 
 end
